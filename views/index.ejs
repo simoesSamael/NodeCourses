@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Lista de disciplinas</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+
+    <h1>Listagem de disciplinas</h1>
+    <p>disciplinas já cadastrados</p>
+
+    <table>
+      <thead>
+        <tr style="background-color: #CCC;">
+          <td>codigo</td>
+          <td>nome</td>
+          <td>cursos</td>
+        </tr>
+      </thead>
+      <!-------------------------------------->
+      <tbody>
+        <% if (!registros || registros.length == 0 ) { %>
+          <tr>
+            <td colspan="4">Nenhum registro cadastrado</td>
+          </tr>
+        <% } else { 
+          registros.forEach(function(disciplinas) { %>
+          <tr>
+            <td><%= disciplinas.discodigo %> </td>
+            <td><%= disciplinas.disnome %></td>
+            <td><%= disciplinas.curnome %></td>
+            <td>
+              <a href="/alteraDisciplina/<%= disciplinas.discodigo %>"> Alterar </a>
+              <a href="/apagaDisciplina/<%= disciplinas.discodigo %>" onclick="return confirma('Confirma exclusão?');"> Apagar </a>
+            </td>        
+            
+          </tr>
+        <% })} %>
+      </tbody>
+      <!-------------------------------------->
+      <tfoot>
+        <tr>
+          <td colspan="4">
+            <br>
+            <a href="/novaDisciplia">Cadastrar Disciplinas</a>
+          </td>
+        </tr>
+      </tfoot>
+    </table>
+
+  </body>
+</html>
+
+
